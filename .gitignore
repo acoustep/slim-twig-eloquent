@@ -3,3 +3,4 @@ composer.phar
 vendor/*
 app/views/cache/*
 config.php
+.DS_STORE
