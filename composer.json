@@ -1,0 +1,19 @@
+{
+  "require": {
+    "twig/twig": "1.*",
+    "twig/extensions": "1.*",
+    "slim/slim": "2.3.*",
+    "slim/views": "0.1.*",
+    "symfony/console": "dev-master",
+    "ruckusing/ruckusing-migrations": "dev-master",
+    "illuminate/database": "*",
+    "illuminate/validation": "*",
+    "illuminate/translation": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "app/models"
+      ],
+    "files": ["app/Validator.php"]
+  }
+}
