@@ -1,28 +1,14 @@
 # Slim, Twig & Eloquent
 
-This is a very bare bones template for using the following:
+## In development
 
-* Slim
-* Slim Views
-* Twig
-* Eloquent
-* Illuminate\Validation
+This branch is very much in early development.  If you're looking for something more stable please switch to the master branch.
 
-## Installation
+## Changelog
 
-Run ```git clone https://github.com/acoustep/slim-twig-eloquent.git``` then in terminal run ```composer install```
-
-Rename ```config.example.php``` to ```config.php``` and edit your application settings.
-
-Make sure your ```.htaccess``` RewriteBase points to the right location (default is ```/public``` for development but you'll probably want to switch it to ```/``` for production or if you use virtual hosts).
-
-## Usage
-
-Put your models in ```app/models```, your templates in ```app/views``` and your routes in ```app/routes.php```.
-
-Make sure to run ```composer update``` after you create a new model.
-
-## To do
-
-* Example
-* Migrations
+* Updated to work with Slim 2.5 from 2.3
+* Removed symfony console dependency
+* Removed twig extensions dependency
+* Switched migrations to Phinx
+* Added symfony/Yaml dependency for Phinx
+* Added Whoops dependency

@@ -1,14 +1,14 @@
 {
   "require": {
-    "twig/twig": "1.*",
-    "twig/extensions": "1.*",
-    "slim/slim": "2.3.*",
+    "slim/slim": "2.5.*",
     "slim/views": "0.1.*",
-    "symfony/console": "dev-master",
-    "ruckusing/ruckusing-migrations": "dev-master",
-    "illuminate/database": "*",
-    "illuminate/validation": "*",
-    "illuminate/translation": "*"
+    "twig/twig": "1.*",
+    "robmorgan/phinx": "0.4.*",
+    "illuminate/database": "4.2.*",
+    "zeuxisoo/slim-whoops": "0.3.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
   },
   "autoload": {
     "classmap": [
