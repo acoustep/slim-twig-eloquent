@@ -1,1 +1,5 @@
-<a href="{{ urlFor('index') }}">Home</a>
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+  <a href="{{ urlFor('index') }}" style="">Hello</a>
+{% endblock %}

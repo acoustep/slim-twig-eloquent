@@ -2,5 +2,5 @@ composer.lock
 composer.phar
 vendor/*
 app/views/cache/*
-config.php
 .DS_Store
+node_modules/*

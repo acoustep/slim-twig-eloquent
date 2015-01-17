@@ -11,6 +11,7 @@
     "roave/security-advisories": "dev-master"
   },
   "autoload": {
+    "files": ["app/config.php"],
     "classmap": [
       "app/models"
       ],
