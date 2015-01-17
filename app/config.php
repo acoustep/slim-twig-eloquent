@@ -13,15 +13,21 @@ if(array_key_exists(gethostname(), $environments))
 else
   $environment = 'production';
 
+// Sqlite requires a file location and Phinx appends an sqlite3 extension
+if($config['environments'][$environment]['adapter'] === 'sqlite')
+  $database = '../'.$config['environments'][$environment]['name'].'.sqlite3';
+else
+  $database = $config['environments'][$environment]['name'];
+
 /**
  ** Configure the database and boot Eloquent
  ** You can set these in phinx.yml
  **/
 $capsule = new Capsule;
 $capsule->addConnection(array(
-  'driver'    => 'mysql',
+  'driver'    => $config['environments'][$environment]['adapter'],
   'host'      => $config['environments'][$environment]['host'],
-  'database'  => $config['environments'][$environment]['name'],
+  'database'  => $database,
   'username'  => $config['environments'][$environment]['user'],
   'password'  => $config['environments'][$environment]['pass'],
   'charset'   => $config['environments'][$environment]['charset'],
@@ -32,4 +38,4 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 // set timezone for timestamps etc
-date_default_timezone_set('GMT');
+// date_default_timezone_set('GMT');

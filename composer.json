@@ -5,16 +5,20 @@
     "twig/twig": "1.*",
     "robmorgan/phinx": "0.4.*",
     "illuminate/database": "4.2.*",
+    "illuminate/validation": "4.2.*",
+    "illuminate/translation": "4.2.*",
     "zeuxisoo/slim-whoops": "0.3.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master"
   },
   "autoload": {
-    "files": ["app/config.php"],
+    "files": [
+      "app/config.php",
+      "app/Validator.php"
+    ],
     "classmap": [
       "app/models"
-      ],
-    "files": ["app/Validator.php"]
+    ]
   }
 }
