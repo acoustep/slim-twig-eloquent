@@ -6,6 +6,8 @@ This branch is very much in early development.  If you're looking for something 
 
 ## Installation
 
+Clone the repository ```https://github.com/acoustep/slim-twig-eloquent.git```
+
 In ```app/config.php``` edit the environments variable to use your computer's ```hostname``` for development.  By default if the hostname is not found it will use your production settings.
 
 Rename ```phinx.example.yml``` to ```phinx.yml``` and edit your settings accordingly.
@@ -96,3 +98,4 @@ $app->get ('/user', function () use ( $app ) {
 * Switched migrations to Phinx
 * Added Whoops dependency
 * Added gulp for assets
+* Added PHPUnit
