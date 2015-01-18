@@ -10,7 +10,8 @@
     "zeuxisoo/slim-whoops": "0.3.0"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-master"
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "4.4.*"
   },
   "autoload": {
     "files": [

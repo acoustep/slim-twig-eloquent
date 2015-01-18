@@ -1,8 +1,16 @@
 <?php
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Symfony\Component\Yaml\Yaml;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Handler\JsonResponseHandler;
 
-$config = Yaml::parse('../phinx.yml');
+$run     = new Whoops\Run;
+$handler = new PrettyPageHandler;
+$run->pushHandler($handler);
+$run->register();
+
+$config = Yaml::parse('..'.DIRECTORY_SEPARATOR.'phinx.yml');
+
 
 // Set your environments to match your computer's hostname
 $environments = ['precise32' => 'development'];
