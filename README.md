@@ -8,9 +8,13 @@ This branch is very much in early development.  If you're looking for something 
 
 Clone the repository ```https://github.com/acoustep/slim-twig-eloquent.git```
 
+Run ```composer install```
+
 In ```app/config.php``` edit the environments variable to use your computer's ```hostname``` for development.  By default if the hostname is not found it will use your production settings.
 
 Rename ```phinx.example.yml``` to ```phinx.yml``` and edit your settings accordingly.
+
+To use the built in local PHP server use ```php -S localhost:8000 -t public```
 
 ### Gulp
 
