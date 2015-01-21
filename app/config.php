@@ -4,16 +4,22 @@ use Symfony\Component\Yaml\Parser;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
 
-$run     = new Whoops\Run;
-$handler = new PrettyPageHandler;
-$run->pushHandler($handler);
-$run->register();
+// Disable Whoops in CLI as it hides exceptions
+if(php_sapi_name() !== 'cli') {
+  $run     = new Whoops\Run;
+  $handler = new PrettyPageHandler;
+  $run->pushHandler($handler);
+  $run->register();
+}
 
+// YAML parser seems to stop the cli from running
 $yaml = new Parser();
 if(file_exists('phinx.yml'))
   $config_location = 'phinx.yml'; 
-else
+elseif(file_exists('..'.DIRECTORY_SEPARATOR.'phinx.yml'))
   $config_location = '..'.DIRECTORY_SEPARATOR.'phinx.yml'; 
+else
+  throw new Exception("phinx.yml not found. Did you rename phinx.example.yml?");
 $config = $yaml->parse(file_get_contents($config_location));
 
 

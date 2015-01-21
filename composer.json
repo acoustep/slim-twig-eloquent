@@ -7,7 +7,8 @@
     "illuminate/database": "4.2.*",
     "illuminate/validation": "4.2.*",
     "illuminate/translation": "4.2.*",
-    "zeuxisoo/slim-whoops": "0.3.0"
+    "zeuxisoo/slim-whoops": "0.3.0",
+    "symfony/console": "2.6.*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
