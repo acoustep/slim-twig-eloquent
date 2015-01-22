@@ -40,6 +40,21 @@ Note that Coffeescript files get written to the javascript directory first which
 
 You should be able to use either out of the box.  Both get compiled with ```gulp``` and ```gulp coffee```. However using both at the same time will obviously cause clashes. 
 
+
+### Commands
+
+By default there are two commands for you to utilize: ```php ste serve``` and ```php ste make:model```.
+
+``php ste serve`` runs the local PHP server (requires PHP 5.4+).
+
+```php ste make:model``` takes the name of your model as it's only parameter, generates a model file in ```app/models``` and runs ```composer dumpautoload``` for your convenience.
+
+#### Creating commands
+
+Commands are made with symfony/console so see their [excellent documentation](http://symfony.com/doc/current/components/console/introduction.html) to get started.
+
+Commands can be stored in app/commands.  To register your new command add it to the ```ste``` file in the root of your project.
+
 ## Gotchas
 
 Add ```use Illuminate\Database\Eloquent\Model as Eloquent;``` to the top of your models.
@@ -51,9 +66,9 @@ Make sure you run ```composer dumpautoload``` after creating new models.
 ```
 <?php
 // app/models/User.php
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model as Model;
 
-class User extends Eloquent {
+class User extends Model {
 
   protected $fillable = [
     'username',
