@@ -4,6 +4,9 @@ use Symfony\Component\Yaml\Parser;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Handler\JsonResponseHandler;
 
+// Set your environments to match your computer's hostname
+$environments = ['HOSTNAME' => 'development'];
+
 // Disable Whoops in CLI as it hides exceptions
 $commandline_mode = false;
 if(php_sapi_name() === 'cli') {
@@ -32,9 +35,6 @@ if( ! $found_config && ! $commandline_mode) {
 
 if($found_config) {
 	$config = $yaml->parse(file_get_contents($config_location));
-
-	// Set your environments to match your computer's hostname
-	$environments = ['precise32' => 'development'];
 
 	// Use production if environment isn't found
 	if(array_key_exists(gethostname(), $environments))

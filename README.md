@@ -2,7 +2,7 @@
 
 ## In development
 
-This branch is very much in early development.  If you're looking for something more stable please switch to the master branch.
+This repo is very much in development.  If you're coming from my [original blog post](http://fullstackstanley.com/read/using-eloquent-twig-and-slim-php) back in 2013 please download the 1.0 tagged release.
 
 ## Installation
 
@@ -10,15 +10,25 @@ Clone the repository ```https://github.com/acoustep/slim-twig-eloquent.git```
 
 Run ```composer install```
 
-In ```app/config.php``` edit the environments variable to use your computer's ```hostname``` for development.  By default if the hostname is not found it will use your production settings.
+In ```app/config.php``` edit the ```$environments``` variable to use your computer's ```hostname``` for development.  
+
+You can retrieve your hostname by running ```hostname``` in your command line.
+
+By default if the hostname is not found it will use the production settings.
 
 Rename ```phinx.example.yml``` to ```phinx.yml``` and edit your settings accordingly.
 
-To use the built in local PHP server use ```php -S localhost:8000 -t public```
+To use the built in local PHP server use ```php -S localhost:8000 -t public/``` or the helper command ```php ste serve```.
 
-### Gulp
+## Migrations
 
-Setting up gulp for compiling your assets will require Node and NPM.
+Migrations are kept in ```app/db/migrations``` and uses [Phinx](https://github.com/robmorgan/phinx).
+
+See the documentation for Phinx [commands](http://docs.phinx.org/en/latest/commands.html) and [migrations](http://docs.phinx.org/en/latest/commands.html#the-migrate-command) to get started.
+
+## Gulp
+
+Setting up gulp for compiling your assets requires Node and NPM.
 
 ```npm install```
 
@@ -28,38 +38,40 @@ By default running ```gulp``` will watch and compile the following:
 * ```app/assets/sass/**/*.scss``` to ```public/css/**/*.css```
 * ```app/assets/less/**/*.scss``` to ```public/css/**/*.css```
 
-#### Switching from Javascript to Coffeescript
+### Switching from Javascript to Coffeescript
 
-As a Coffeescript user I've made it super simple to use it instead of javascript.
+As a Coffeescript user I've made it super simple to use Coffeescript instead of Javascript.
 
-Just run ```gulp coffee``` instead of the default ```gulp```.
+Run ```gulp coffee``` instead of the default ```gulp```.
+
+The coffee command watches and compiles to the following directories
+
+* ```app/assets/coffeescripts/**/*.js``` to to app/assets/javascripts/**/*.js``` to ```public/js/application.js```
+* ```app/assets/sass/**/*.scss``` to ```public/css/**/*.css```
+* ```app/assets/less/**/*.scss``` to ```public/css/**/*.css```
 
 Note that Coffeescript files get written to the javascript directory first which will overwrite any files with the same name.
 
-#### SASS / LESS
+### SASS / LESS
 
 You should be able to use either out of the box.  Both get compiled with ```gulp``` and ```gulp coffee```. However using both at the same time will obviously cause clashes. 
 
+Sass files are stored in ```app/assets/sass``` and less files are stored in ```app/assets/less```.
 
-### Commands
+## Commands
 
 By default there are two commands for you to utilize: ```php ste serve``` and ```php ste make:model```.
 
 ``php ste serve`` runs the local PHP server (requires PHP 5.4+).
 
-```php ste make:model``` takes the name of your model as it's only parameter, generates a model file in ```app/models``` and runs ```composer dumpautoload``` for your convenience.
+```php ste make:model``` takes the name of your model as it's first argument, generates a model file in ```app/models``` and runs ```composer dumpautoload``` for your convenience.
 
-#### Creating commands
+### Creating commands
 
 Commands are made with symfony/console so see their [excellent documentation](http://symfony.com/doc/current/components/console/introduction.html) to get started.
 
 Commands can be stored in app/commands.  To register your new command add it to the ```ste``` file in the root of your project.
 
-## Gotchas
-
-Add ```use Illuminate\Database\Eloquent\Model as Eloquent;``` to the top of your models.
-
-Make sure you run ```composer dumpautoload``` after creating new models.
 
 ## Model and validation example
 
@@ -88,7 +100,6 @@ class User extends Model {
 }
 ```
 
-
 ```
 <?php
 // app/routes.php
@@ -106,15 +117,21 @@ $app->get ('/user', function () use ( $app ) {
   // Outputs: "The username is required."
 });
 
-
 ```
 
+## Gotchas
+
+Add ```use Illuminate\Database\Eloquent\Model as Eloquent;``` to the top of your models.
+
+Make sure you run ```composer dumpautoload``` after creating new models.
 
 ## Changelog
 
+### 2.0-alpha
+
 * Updated to work with Slim 2.5 from 2.3
-* Removed twig extensions dependency
+* Removed twig-extensions dependency
 * Switched migrations to Phinx
 * Added Whoops dependency
 * Added gulp for assets
-* Added PHPUnit
+* Added two commands: ```serve``` and ```model:make```
