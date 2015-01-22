@@ -20,7 +20,8 @@
       "app/Validator.php"
     ],
     "classmap": [
-      "app/models"
+      "app/models",
+      "app/commands"
     ]
   }
 }
