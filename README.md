@@ -134,6 +134,13 @@ Commands are made with symfony/console so see their [excellent documentation](ht
 
 Commands can be stored in app/commands.  To register your new command add it to the ```ste``` file in the root of your project.
 
+## Todo
+
+* Switch $environments variable to have the environment as the key and the hostname as the value.
+* Set default timezone for Phinx.
+* Check Read me
+* Test commands
+
 ## Changelog
 
 ### 2.0-alpha
