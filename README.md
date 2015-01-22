@@ -20,60 +20,23 @@ Rename ```phinx.example.yml``` to ```phinx.yml``` and edit your settings accordi
 
 To use the built in local PHP server use ```php -S localhost:8000 -t public/``` or the helper command ```php ste serve```.
 
-## Migrations
+## Slim Routes
 
-Migrations are kept in ```app/db/migrations``` and uses [Phinx](https://github.com/robmorgan/phinx).
+Routes are all kept in ```app/routes.php```. To learn more about Slim's routing system see the [documentation](http://docs.slimframework.com/).
 
-See the documentation for Phinx [commands](http://docs.phinx.org/en/latest/commands.html) and [migrations](http://docs.phinx.org/en/latest/commands.html#the-migrate-command) to get started.
+## Twig Views
 
-## Gulp
+Views are kept in ```app/views/```. Helper functions such as ```urlFor``` are supported. 
 
-Setting up gulp for compiling your assets requires Node and NPM.
+See the [Twig documentation](http://twig.sensiolabs.org/documentation) for more information.
 
-```npm install```
+## Eloquent Models
 
-By default running ```gulp``` will watch and compile the following:
+Models are kept in app/models/.  See the [Eloquent documentation](http://laravel.com/docs/4.2/eloquent) for more information.
 
-* ```app/assets/javascripts/**/*.js``` to ```public/js/application.js```
-* ```app/assets/sass/**/*.scss``` to ```public/css/**/*.css```
-* ```app/assets/less/**/*.scss``` to ```public/css/**/*.css```
+Models can be generated with ```php ste model:make ModelName```. This command will also run ```composer dumpautoload```.
 
-### Switching from Javascript to Coffeescript
-
-As a Coffeescript user I've made it super simple to use Coffeescript instead of Javascript.
-
-Run ```gulp coffee``` instead of the default ```gulp```.
-
-The coffee command watches and compiles to the following directories
-
-* ```app/assets/coffeescripts/**/*.js``` to to app/assets/javascripts/**/*.js``` to ```public/js/application.js```
-* ```app/assets/sass/**/*.scss``` to ```public/css/**/*.css```
-* ```app/assets/less/**/*.scss``` to ```public/css/**/*.css```
-
-Note that Coffeescript files get written to the javascript directory first which will overwrite any files with the same name.
-
-### SASS / LESS
-
-You should be able to use either out of the box.  Both get compiled with ```gulp``` and ```gulp coffee```. However using both at the same time will obviously cause clashes. 
-
-Sass files are stored in ```app/assets/sass``` and less files are stored in ```app/assets/less```.
-
-## Commands
-
-By default there are two commands for you to utilize: ```php ste serve``` and ```php ste make:model```.
-
-``php ste serve`` runs the local PHP server (requires PHP 5.4+).
-
-```php ste make:model``` takes the name of your model as it's first argument, generates a model file in ```app/models``` and runs ```composer dumpautoload``` for your convenience.
-
-### Creating commands
-
-Commands are made with symfony/console so see their [excellent documentation](http://symfony.com/doc/current/components/console/introduction.html) to get started.
-
-Commands can be stored in app/commands.  To register your new command add it to the ```ste``` file in the root of your project.
-
-
-## Model and validation example
+### Model and validation example
 
 ```
 <?php
@@ -119,11 +82,57 @@ $app->get ('/user', function () use ( $app ) {
 
 ```
 
-## Gotchas
+## Migrations
 
-Add ```use Illuminate\Database\Eloquent\Model as Eloquent;``` to the top of your models.
+Migrations are kept in ```app/db/migrations``` and uses [Phinx](https://github.com/robmorgan/phinx).
 
-Make sure you run ```composer dumpautoload``` after creating new models.
+See the documentation for Phinx [commands](http://docs.phinx.org/en/latest/commands.html) and [migrations](http://docs.phinx.org/en/latest/commands.html#the-migrate-command) to get started.
+
+## Gulp
+
+Setting up gulp for compiling your assets requires Node and NPM.
+
+```npm install```
+
+By default running ```gulp``` will watch and compile the following:
+
+* ```app/assets/javascripts/**/*.js``` to ```public/js/application.js```
+* ```app/assets/sass/**/*.scss``` to ```public/css/**/*.css```
+* ```app/assets/less/**/*.scss``` to ```public/css/**/*.css```
+
+### Switching from Javascript to Coffeescript
+
+As a Coffeescript user I've made it super simple to use Coffeescript instead of Javascript.
+
+Run ```gulp coffee``` instead of the default ```gulp```.
+
+The coffee command watches and compiles to the following directories
+
+* ```app/assets/coffeescripts/**/*.js``` to ```app/assets/javascripts/**/*.js``` to ```public/js/application.js```
+* ```app/assets/sass/**/*.scss``` to ```public/css/**/*.css```
+* ```app/assets/less/**/*.scss``` to ```public/css/**/*.css```
+
+Note that Coffeescript files get written to the javascript directory first which will overwrite any files with the same name.
+
+### SASS / LESS
+
+You should be able to use either out of the box.  Both get compiled with ```gulp``` and ```gulp coffee```.
+
+Sass files are stored in ```app/assets/sass``` and less files are stored in ```app/assets/less```.
+
+## Commands
+
+By default there are two commands for you to utilize: ```php ste serve``` and ```php ste make:model```.
+
+``php ste serve`` runs the local PHP server.
+
+```php ste make:model``` takes the name of your model as its first argument, generates a model file in ```app/models``` and runs ```composer dumpautoload``` for your convenience.
+
+### Creating commands
+
+Commands are made with symfony/console so see their [excellent documentation](http://symfony.com/doc/current/components/console/introduction.html) to get started.
+
+Commands can be stored in app/commands.  To register your new command add it to the ```ste``` file in the root of your project.
 
 ## Changelog
 
